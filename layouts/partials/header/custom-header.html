@@ -3,7 +3,8 @@
         <div class="container-fluid">
 
             <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
-                <img src="/images/base.svg" alt="{{ site.Title }} Logo" width="48" height="48" class="d-inline-block">
+                <img src="{{ "images/base.svg" | relURL }}" alt="{{ site.Title }} Logo" width="48" height="48"
+                    class="d-inline-block">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"

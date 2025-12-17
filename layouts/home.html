@@ -11,7 +11,7 @@
     <div class="image">
       <div class="image-container">
         <div class="image-bg"></div>
-        <img class="image-src" src="{{ .Params.hero_image | default " /images/base.svg" }}"
+        <img class="image-src" src="{{ .Params.hero_image | default "images/base.svg" | relURL }}"
           alt="{{ .Params.title }}" />
       </div>
     </div>

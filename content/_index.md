@@ -18,7 +18,7 @@ actions:
   - label: "Deploy"
     link: "/docs/getting-started/setup/"
 
-hero_image: "/images/base.svg"
+hero_image: "images/base.svg"
 
 benefits_title: "Why Choose OCM?"
 benefits_cards_max_columns: 3
