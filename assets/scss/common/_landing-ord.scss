@@ -305,10 +305,12 @@
     background: #202126; // Fallback or specific dark bg
     box-shadow: none;
     background-clip: padding-box;
+    text-decoration: none; // Added to handle linkified cards
 
     &:hover {
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         transform: translateY(-1px);
+        text-decoration: none; // Ensure no underline on hover
     }
 
     &:active {
@@ -316,8 +318,31 @@
         transform: translateY(0);
     }
 
+    .card-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        font-size: 16px;
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        .separator {
+            color: var(--lp-c-brand-1);
+            font-weight: 300;
+            opacity: 0.6;
+            font-family: sans-serif;
+        }
+
+        .title {
+            font-weight: 600;
+        }
+    }
+
     p {
-        margin: 10px 0 0;
+        margin: 12px 0 0;
         color: var(--lp-c-text-2);
         font-weight: 500;
         line-height: 1.6;

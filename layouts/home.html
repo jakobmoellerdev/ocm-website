@@ -11,7 +11,7 @@
     <div class="image">
       <div class="image-container">
         <div class="image-bg"></div>
-        <img class="image-src" src="{{ .Params.hero_image | default "images/base.svg" | relURL }}"
+        <img class="image-src" src="{{ .Params.hero_image | default " images/base.svg" | relURL }}"
           alt="{{ .Params.title }}" />
       </div>
     </div>
@@ -36,10 +36,25 @@
   <div class="container">
     <div class="lp-features">
       {{ range .Params.benefits }}
+      {{ if .link }}
+      <a href="{{ .link | relURL }}" class="lp-feature-card">
+        <h3 class="card-header">
+          <span class="emoji">{{ .emoji }}</span>
+          <span class="separator">|</span>
+          <span class="title">{{ .title }}</span>
+        </h3>
+        <p>{{ .description }}</p>
+      </a>
+      {{ else }}
       <div class="lp-feature-card">
-        <h3>{{ .emoji }} {{ .title }}</h3>
+        <h3 class="card-header">
+          <span class="emoji">{{ .emoji }}</span>
+          <span class="separator">|</span>
+          <span class="title">{{ .title }}</span>
+        </h3>
         <p>{{ .description }}</p>
       </div>
+      {{ end }}
       {{ end }}
     </div>
   </div>
