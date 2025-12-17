@@ -1,11 +1,21 @@
 // Main SCSS file importing all modular components
-@import "base";            // Layout & structure
-@import "header";          // Header & navigation
-@import "branding";        // Logo & fonts
-@import "sidebar";         // Sidebar navigation
-@import "cards";           // Card grid system
-@import "components";      // TOC & description boxes
-@import "footer";          // Footer styles
-@import "pages";           // Page-specific overrides
+@import "variables-custom"; // Custom variables (colors, fonts)
+@import "base"; // Layout & structure
+// @import "header"; // Header & navigation
+@import "header-custom"; // New Custom Header Port
+@import "branding"; // Logo & fonts
+@import "sidebar"; // Sidebar navigation
+@import "cards"; // Card grid system
+@import "components"; // TOC & description boxes
+@import "footer"; // Footer styles
+@import "pages"; // Page-specific overrides
 @import "version-warning"; // Version warning banner styles
+@import "landing-ord"; // Migrated ORD Landing Page Styles
+
+// Fix for horizontal overflow on landing page
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 // End of imports

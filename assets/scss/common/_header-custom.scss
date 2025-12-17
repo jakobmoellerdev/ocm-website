@@ -1,0 +1,245 @@
+/* Custom Header Styles adapted from ORD Specification */
+
+:root {
+    --nav-height: 60px;
+    --nav-gap: clamp(16px, 2vw, 24px);
+    --nav-link-size: 0.9375rem;
+    /* 15px */
+    --fw-nav: 500;
+    --fw-nav-hover: 500;
+    --fw-nav-active: 600;
+    --nav-border-scrolled: var(--lp-c-border);
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: var(--nav-height);
+    background-color: var(--lp-c-bg);
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+    @include media-breakpoint-up(lg) {
+        background-color: var(--lp-c-bg);
+
+        /* Glassmorphism */
+        @supports (backdrop-filter: blur(12px)) {
+            background-color: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+        }
+    }
+
+    &.scrolled {
+        border-bottom-color: var(--nav-border-scrolled);
+        box-shadow: var(--shadow-md);
+    }
+}
+
+.navbar {
+    height: 100%;
+    padding: 0;
+
+    .container-fluid {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: var(--nav-gap);
+        padding-inline: var(--nav-pad-x, 24px); // Add padding using var or fallback
+    }
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+
+    img {
+        // height attribute handles size, ensuring unconstrained width maintains aspect ratio
+        display: block;
+    }
+
+    .navbar-brand-text {
+        margin-left: 10px;
+        font-weight: 700;
+        color: var(--c-text-strong);
+        line-height: 1;
+    }
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column; // Column on mobile
+    align-items: flex-start; // Align left on mobile
+    gap: 1rem; // Spacing on mobile
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: auto; // Auto height on mobile
+
+    @include media-breakpoint-up(lg) {
+        flex-direction: row; // Row on desktop
+        align-items: center;
+        gap: var(--nav-gap);
+        height: 100%;
+    }
+
+    .nav-item {
+        width: 100%; // Full width on mobile
+
+        @include media-breakpoint-up(lg) {
+            width: auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .nav-link {
+        display: inline-flex;
+        align-items: center;
+        width: 100%; // Full width on mobile
+        padding: 0.5rem 0; // Larger hit area on mobile
+        font-size: var(--nav-link-size);
+        font-weight: var(--fw-nav);
+        color: var(--lp-c-text-2) !important;
+        text-decoration: none;
+        transition: color 0.15s ease;
+        background: transparent;
+        border: none;
+
+        @include media-breakpoint-up(lg) {
+            width: auto;
+            height: 100%;
+            padding: 0 4px;
+        }
+
+        &:hover,
+        &:focus {
+            color: var(--c-accent) !important;
+            font-weight: var(--fw-nav-hover);
+        }
+
+        &.active,
+        &[aria-current="page"] {
+            color: var(--c-accent) !important;
+            font-weight: var(--fw-nav-active);
+        }
+    }
+}
+
+/* Right aligned items */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 1rem; // Spacing on mobile
+
+    @include media-breakpoint-up(lg) {
+        margin-left: auto;
+        margin-top: 0;
+    }
+}
+
+/* GitHub Pill Style */
+.header-github-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--lp-c-text-2);
+    font-size: var(--nav-link-size);
+    font-weight: var(--fw-nav);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    line-height: 1;
+
+    span {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    &:hover {
+        color: var(--lp-c-text-1);
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+        display: block; // Ensure no weird inline spacing
+    }
+}
+
+/* Theme Toggle */
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--lp-c-text-2);
+
+    &:hover {
+        color: var(--lp-c-text-1);
+    }
+}
+
+/* Mobile Toggle */
+.navbar-toggler {
+    border: none;
+    background: transparent;
+    padding: 0;
+    color: var(--lp-c-text-2);
+    display: flex;
+    margin-left: auto;
+
+    @include media-breakpoint-up(lg) {
+        display: none;
+    }
+}
+
+/* Offcanvas/Mobile Menu tweaks + Desktop Reset */
+.offcanvas {
+    background-color: var(--lp-c-bg);
+
+    .offcanvas-header {
+        border-bottom: 1px solid var(--lp-c-border);
+    }
+
+    .offcanvas-body {
+        padding: 24px; // Spacing on mobile
+        width: 100%; // Ensure body fills the offcanvas
+    }
+
+    /* DESKTOP RESET: Make offcanvas behave like normal navbar */
+    @include media-breakpoint-up(lg) {
+        position: static;
+        z-index: auto;
+        flex-grow: 1;
+        width: 100% !important; // Force full width to fill container
+        height: auto !important;
+        visibility: visible !important;
+        background-color: transparent !important;
+        border: 0 !important;
+        transform: none !important;
+        transition: none;
+        display: flex;
+        align-items: center;
+
+        .offcanvas-header {
+            display: none;
+        }
+
+        .offcanvas-body {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            padding: 0;
+            overflow: visible;
+            width: 100%; // Ensure body fills the offcanvas
+        }
+    }
+}

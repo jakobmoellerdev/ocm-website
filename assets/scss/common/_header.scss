@@ -10,9 +10,12 @@
 }
 
 .dropdown-item .version-flag {
-  color: inherit;          /* Same color as text */
-  font-size: inherit;      /* Same size as text */
-  font-weight: inherit;    /* Same weight as text */
+  color: inherit;
+  /* Same color as text */
+  font-size: inherit;
+  /* Same size as text */
+  font-weight: inherit;
+  /* Same weight as text */
 }
 
 /*
@@ -34,10 +37,14 @@
  * !important is used to override other theme settings.
  */
 header.navbar {
-  background-color: #1d1e22 !important;  /* Dark background (almost black) */
-  color: #dee2e6 !important;             /* Light text color */
-  padding-top: 1rem;                     /* Top spacing */
-  padding-bottom: 1rem;                  /* Bottom spacing */
+  background-color: #1d1e22 !important;
+  /* Dark background (almost black) */
+  color: #dee2e6 !important;
+  /* Light text color */
+  padding-top: 1rem;
+  /* Top spacing */
+  padding-bottom: 1rem;
+  /* Bottom spacing */
 }
 
 /* COLORED BAR AT THE TOP
@@ -46,10 +53,14 @@ header.navbar {
  * Remains the same in light and dark mode.
  */
 .header-bar {
-  height: 4px !important;                /* Very thin line */
-  background: linear-gradient(to right, #4cc9f0, #4361ee) !important;  /* Blue gradient */
-  border: none !important;               /* No borders */
-  box-shadow: none !important;           /* No shadow */
+  height: 4px !important;
+  /* Very thin line */
+  background: var(--brand-gradient) !important;
+  /* Blue gradient */
+  border: none !important;
+  /* No borders */
+  box-shadow: none !important;
+  /* No shadow */
 }
 
 /* NAVIGATION ELEMENTS
@@ -60,7 +71,8 @@ header.navbar {
 header.navbar .nav-link,
 header.navbar .btn-link,
 header.navbar .btn-dropdown {
-  color: #dee2e6 !important;             /* Light text color for all elements */
+  color: #dee2e6 !important;
+  /* Light text color for all elements */
 }
 
 /* ICONS IN NAVIGATION
@@ -71,8 +83,10 @@ header.navbar .btn-dropdown {
 header.navbar .btn-link svg,
 header.navbar .btn-dropdown svg,
 header.navbar .nav-link[aria-label="Search website"] svg {
-  stroke: #dee2e6;                      /* Light stroke color */
-  fill: none;                           /* No fill */
+  stroke: #dee2e6;
+  /* Light stroke color */
+  fill: none;
+  /* No fill */
 }
 
 /* OFFCANVAS MENU
@@ -82,39 +96,45 @@ header.navbar .nav-link[aria-label="Search website"] svg {
  */
 @media (max-width: 991.98px) {
   .offcanvas.offcanvas-end .offcanvas-body .navbar-nav .nav-link {
-    color: #232336 !important;             /* Dark gray for readability in light mode */
+    color: #232336 !important;
+    /* Dark gray for readability in light mode */
   }
-  
+
   /* Versions dropdown and social media icons styling */
   .offcanvas.offcanvas-end .offcanvas-body .btn-dropdown,
   .offcanvas.offcanvas-end .offcanvas-body .btn-link,
   .offcanvas.offcanvas-end .offcanvas-body .dropdown-toggle {
-    color: #232336 !important;             /* Same color as nav links */
+    color: #232336 !important;
+    /* Same color as nav links */
   }
-  
+
   /* Social media icons (SVG) styling - match desktop header exactly */
   .offcanvas.offcanvas-end .offcanvas-body .social-link svg,
   .offcanvas.offcanvas-end .offcanvas-body .btn-link svg,
   .offcanvas.offcanvas-end .offcanvas-body .nav-link svg {
-    stroke: #dee2e6 !important;           /* Same as desktop header */
+    stroke: #dee2e6 !important;
+    /* Same as desktop header */
     /* Don't override fill - let SVG definitions control solid vs outlined */
   }
-  
+
   /* Dark mode styles */
   [data-bs-theme="dark"] .offcanvas.offcanvas-end .offcanvas-body .navbar-nav .nav-link {
-    color: #dee2e6 !important;             /* Light color in dark mode */
+    color: #dee2e6 !important;
+    /* Light color in dark mode */
   }
-  
+
   [data-bs-theme="dark"] .offcanvas.offcanvas-end .offcanvas-body .btn-dropdown,
   [data-bs-theme="dark"] .offcanvas.offcanvas-end .offcanvas-body .btn-link,
   [data-bs-theme="dark"] .offcanvas.offcanvas-end .offcanvas-body .dropdown-toggle {
-    color: #dee2e6 !important;             /* Light color in dark mode */
+    color: #dee2e6 !important;
+    /* Light color in dark mode */
   }
-  
+
   [data-bs-theme="dark"] .offcanvas.offcanvas-end .offcanvas-body .social-link svg,
   [data-bs-theme="dark"] .offcanvas.offcanvas-end .offcanvas-body .btn-link svg,
   [data-bs-theme="dark"] .offcanvas.offcanvas-end .offcanvas-body .nav-link svg {
-    stroke: #dee2e6 !important;           /* Same as desktop header */
+    stroke: #dee2e6 !important;
+    /* Same as desktop header */
     /* Don't override fill - let SVG definitions control solid vs outlined */
   }
 }

@@ -7,30 +7,18 @@ subheadline: "Anywhere, at any scale."
 intro1: "The Open Component Model (OCM) is your one-stop open-source"
 intro2: "Software Bill of Delivery (SBoD)"
 intro3: "for packaging, signing, transporting and deploying your artifacts – preserving end-to-end security, integrity and provenance."
-cta_text: "Get Started"
 
-how_ocm_works_title: "How OCM Works"
-how_ocm_works:
+actions:
   - label: "Pack"
-    emoji: "📝"
-    title: "Pack"
-    description: "Describe and pack components in code with powerful lifecycle metadata."
     link: "/docs/getting-started/create-component-version/"
   - label: "Sign"
-    emoji: "🔐"
-    title: "Sign"
-    description: "Add cryptographic signatures. End-to-end trust from source to deployment."
     link: "/docs/getting-started/sign-component-version/"
   - label: "Transport"
-    emoji: "🚚"
-    title: "Transport"
-    description: "Works across boundaries — public cloud, on-prem, air-gapped. Tamper-proof."
     link: "/docs/tutorials/complex-component-structure-deployment/"
   - label: "Deploy"
-    emoji: "🚀"
-    title: "Deploy"
-    description: "Automate deployments with OCM controllers and Flux. Seamless GitOps."
     link: "/docs/getting-started/setup/"
+
+hero_image: "/images/base.svg"
 
 benefits_title: "Why Choose OCM?"
 benefits_cards_max_columns: 3
