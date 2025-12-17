@@ -113,6 +113,9 @@
                         {{ end -}}
                         {{ end -}}
 
+                        <!-- Version Droplet -->
+                        {{ partial "header/version-warning.html" . }}
+
                         <!-- Theme Toggle -->
                         {{ if and (eq site.Params.doks.colorMode "auto") site.Params.doks.colorModeToggler -}}
                         <button id="buttonColorMode" class="btn btn-link nav-link p-0 mode-toggle" type="button"
@@ -148,4 +151,3 @@
 {{ if site.Params.doks.flexSearch }}
 {{ partial "header/search-modal" . }}
 {{ end }}
-{{ partial "header/version-warning.html" . }}

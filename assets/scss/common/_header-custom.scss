@@ -151,7 +151,8 @@
     .header-github-pill,
     .mode-toggle,
     .btn-dropdown,
-    .dropdown {
+    .dropdown,
+    .version-droplet {
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -160,6 +161,74 @@
         padding: 0 !important;
         line-height: 1 !important;
         vertical-align: middle !important;
+    }
+
+    .version-droplet {
+        position: relative; // Needed for tooltip positioning
+        padding: 0 10px !important;
+        background-color: #ffc107;
+        color: #000;
+        border-radius: 16px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        cursor: help;
+
+        // Custom CSS Tooltip
+        &::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: calc(100% + 14px); // Position below
+            bottom: auto;
+            right: 0; // Align to right edge (extends left)
+            left: auto;
+            width: 260px;
+            padding: 12px;
+            background-color: #1b1b1f;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: none;
+            line-height: 1.5;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 1001;
+            text-align: left;
+            transform: translateY(-8px); // Start slightly up
+        }
+
+        // Tooltip Arrow
+        &::before {
+            content: "";
+            position: absolute;
+            top: calc(100% + 2px); // Tip of arrow just below element
+            bottom: auto;
+            right: 15px; // Align arrow with the droplet center (roughly)
+            left: auto;
+            border-width: 6px;
+            border-style: solid;
+            // Arrow pointing UP: Bottom border has color
+            border-color: transparent transparent #1b1b1f transparent;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 1001;
+            transform: translateY(-8px);
+        }
+
+        &:hover {
+
+            &::after,
+            &::before {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     }
 }
 
