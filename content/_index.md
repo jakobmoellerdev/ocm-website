@@ -10,13 +10,13 @@ intro3: "for packaging, signing, transporting and deploying your artifacts – p
 
 actions:
   - label: "Pack"
-    link: "/docs/getting-started/create-component-version/"
+    link: "docs/getting-started/create-component-version/"
   - label: "Sign"
-    link: "/docs/getting-started/sign-component-version/"
+    link: "docs/getting-started/sign-component-version/"
   - label: "Transport"
-    link: "/docs/tutorials/complex-component-structure-deployment/"
+    link: "docs/tutorials/complex-component-structure-deployment/"
   - label: "Deploy"
-    link: "/docs/getting-started/setup/"
+    link: "docs/getting-started/setup/"
 
 hero_image: "images/base.svg"
 

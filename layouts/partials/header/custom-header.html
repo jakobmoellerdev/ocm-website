@@ -19,6 +19,20 @@
                 </svg>
             </button>
 
+            <!-- Search Toggle Mobile -->
+            {{ if site.Params.doks.flexSearch }}
+            <button type="button" id="searchToggleMobile" class="btn btn-link nav-link p-0 d-lg-none ms-auto me-3"
+                aria-label="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                    <path d="M21 21l-6 -6"></path>
+                </svg>
+            </button>
+            {{ end }}
+
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
@@ -40,8 +54,8 @@
                     <div class="navbar-right">
                         <!-- Search Placeholder or Partial -->
                         {{ if site.Params.doks.flexSearch }}
-                        <button type="button" class="btn btn-link nav-link p-0 me-3 d-none d-lg-flex"
-                            aria-label="Search" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <button type="button" id="searchToggleDesktop"
+                            class="btn btn-link nav-link p-0 me-3 d-none d-lg-flex" aria-label="Search">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search"
                                 width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -60,6 +74,44 @@
                             <span>{{ .Name }}</span>
                         </a>
                         {{ end }}
+
+                        <!-- Version switches always navigate to the Root page of the selected version -->
+                        {{ if site.Params.doks.docsVersioning -}}
+                        {{ $versionsData := site.Data.versions -}}
+                        {{ if $versionsData.versions -}}
+                        {{ $currentVer := site.Params.doks.docsVersion -}}
+                        <div class="dropdown me-3 d-none d-lg-flex">
+                            <button class="btn btn-link nav-link p-0 dropdown-toggle btn-dropdown" id="doks-versions"
+                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"
+                                aria-label="Toggle version menu">
+                                Versions
+                                <span class="dropdown-caret">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M6 9l6 6l6 -6" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-lg-end shadow rounded border-0"
+                                aria-labelledby="doks-versions">
+                                {{ range $versionsData.versions -}}
+                                {{ $isDefault := eq . $versionsData.defaultVersion -}}
+                                {{ $isCurrent := eq . $currentVer -}}
+                                <li>
+                                    <a class="dropdown-item{{ if $isCurrent }} current{{ end }}" {{ if $isCurrent
+                                        }}aria-current="true" {{ end }}
+                                        href="{{ if $isDefault }}/{{ else }}/{{ . }}/{{ end }}">
+                                        {{ . }}{{ if $isDefault }} <span class="version-flag">(default)</span>{{ end }}
+                                    </a>
+                                </li>
+                                {{ end -}}
+                            </ul>
+                        </div>
+                        {{ end -}}
+                        {{ end -}}
 
                         <!-- Theme Toggle -->
                         {{ if and (eq site.Params.doks.colorMode "auto") site.Params.doks.colorModeToggler -}}
@@ -91,8 +143,9 @@
             </div>
         </div>
     </nav>
-
-    {{ if site.Params.doks.flexSearch }}
-    {{ partial "header/search-modal" . }}
-    {{ end }}
 </header>
+
+{{ if site.Params.doks.flexSearch }}
+{{ partial "header/search-modal" . }}
+{{ end }}
+{{ partial "header/version-warning.html" . }}

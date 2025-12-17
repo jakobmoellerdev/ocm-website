@@ -21,7 +21,7 @@
     <div class="actions">
       {{ range .Params.actions }}
       <div class="action medium {{ .type | default " alt" }}">
-        <a href="{{ .link }}">{{ .label }}</a>
+        <a href="{{ .link | relURL }}">{{ .label }}</a>
       </div>
       {{ end }}
     </div>

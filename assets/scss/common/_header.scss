@@ -39,7 +39,7 @@
 header.navbar {
   background-color: #1d1e22 !important;
   /* Dark background (almost black) */
-  color: #dee2e6 !important;
+  color: var(--lp-c-text-1) !important;
   /* Light text color */
   padding-top: 1rem;
   /* Top spacing */
@@ -71,7 +71,7 @@ header.navbar {
 header.navbar .nav-link,
 header.navbar .btn-link,
 header.navbar .btn-dropdown {
-  color: #dee2e6 !important;
+  color: var(--lp-c-text-1) !important;
   /* Light text color for all elements */
 }
 
@@ -83,7 +83,7 @@ header.navbar .btn-dropdown {
 header.navbar .btn-link svg,
 header.navbar .btn-dropdown svg,
 header.navbar .nav-link[aria-label="Search website"] svg {
-  stroke: #dee2e6;
+  stroke: var(--lp-c-text-1);
   /* Light stroke color */
   fill: none;
   /* No fill */

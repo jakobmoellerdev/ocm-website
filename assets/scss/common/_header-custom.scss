@@ -106,7 +106,7 @@
         padding: 0.5rem 0; // Larger hit area on mobile
         font-size: var(--nav-link-size);
         font-weight: var(--fw-nav);
-        color: var(--lp-c-text-2) !important;
+        color: var(--lp-c-text-1) !important;
         text-decoration: none;
         transition: color 0.15s ease;
         background: transparent;
@@ -142,20 +142,35 @@
     @include media-breakpoint-up(lg) {
         margin-left: auto;
         margin-top: 0;
+        height: var(--nav-height); // Full height for container centering
+    }
+
+    // Standardize all utility buttons/links in the right section
+    .btn-link,
+    .nav-link,
+    .header-github-pill,
+    .mode-toggle,
+    .btn-dropdown,
+    .dropdown {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 32px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+        vertical-align: middle !important;
     }
 }
 
 /* GitHub Pill Style */
 .header-github-pill {
-    display: inline-flex;
-    align-items: center;
     gap: 6px;
-    color: var(--lp-c-text-2);
+    color: var(--lp-c-text-1);
     font-size: var(--nav-link-size);
     font-weight: var(--fw-nav);
     text-decoration: none;
     transition: color 0.15s ease;
-    line-height: 1;
 
     span {
         display: inline-flex;
@@ -163,27 +178,84 @@
     }
 
     &:hover {
-        color: var(--lp-c-text-1);
+        color: var(--c-accent);
     }
 
     .icon {
         width: 20px;
         height: 20px;
-        display: block; // Ensure no weird inline spacing
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
 /* Theme Toggle */
 .mode-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 32px;
-    height: 32px;
-    color: var(--lp-c-text-2);
+    color: var(--lp-c-text-1);
 
     &:hover {
-        color: var(--lp-c-text-1);
+        color: var(--c-accent);
+    }
+}
+
+/* Button & Dropdown Reset */
+.btn-link.nav-link,
+.btn-dropdown {
+    font-size: var(--nav-link-size);
+    font-weight: var(--fw-nav);
+    color: var(--lp-c-text-1) !important;
+    text-decoration: none !important;
+    border: none;
+    background: transparent;
+
+    &:hover {
+        color: var(--c-accent) !important;
+    }
+
+    svg {
+        stroke: currentColor;
+    }
+
+    &.me-3 {
+        margin-right: 1rem !important; // Restore spacing for search button
+    }
+}
+
+.dropdown-toggle::after {
+    display: none; // Hide Bootstrap default caret if needed, though we use our own SVG
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    background-color: var(--lp-c-bg-elv) !important;
+    border: 1px solid var(--lp-c-border) !important;
+    padding: 8px 0;
+
+    .dropdown-item {
+        color: var(--lp-c-text-1) !important;
+        font-size: 0.875rem;
+        padding: 8px 16px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover,
+        &:focus {
+            background-color: var(--lp-c-bg-soft) !important;
+            color: var(--c-accent) !important;
+        }
+
+        &.current,
+        &[aria-current="true"] {
+            color: var(--c-accent) !important;
+            font-weight: 600;
+        }
+
+        .version-flag {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-left: 4px;
+        }
     }
 }
 
