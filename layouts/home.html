@@ -17,22 +17,30 @@
     </div>
   </div>
 
+  <div class="container section-container">
+    <h2 class="section-title">{{ .Params.how_ocm_works_title }}</h2>
+  </div>
+  
   <div class="container">
-    <div class="actions">
+    <div class="actions-grid">
       {{ range .Params.actions }}
-      <div class="action medium {{ .type | default " alt" }}">
-        <a href="{{ .link | relURL }}">{{ .label }}</a>
-      </div>
+      <a href="{{ .link | relURL }}" class="action-card">
+        <div class="action-card-content">
+          <div class="action-card-header">
+            <span class="action-emoji">{{ .emoji }}</span>
+            <h3 class="action-title">{{ .label }}</h3>
+          </div>
+          <p class="action-description">{{ .description }}</p>
+        </div>
+      </a>
       {{ end }}
     </div>
   </div>
 
-  <div class="container">
-    <p class="definition">
-      {{ .Params.intro1 }} {{ .Params.intro2 }} {{ .Params.intro3 }}
-    </p>
+  <div class="container section-container">
+    <h2 class="section-title">{{ .Params.why_choose_title }}</h2>
   </div>
-
+  
   <div class="container">
     <div class="lp-features">
       {{ range .Params.benefits }}
