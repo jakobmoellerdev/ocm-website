@@ -3,25 +3,13 @@
         <div class="container-fluid">
 
             <a class="navbar-brand" href="{{ .Site.Home.RelPermalink }}">
-                <img src="{{ "images/base.svg" | relURL }}" alt="{{ site.Title }} Logo" width="48" height="48"
+                <img src="{{ `images/base.svg` | relURL }}" alt="{{ site.Title }} Logo" width="48" height="48"
                     class="d-inline-block">
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24"
-                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M4 6l16 0"></path>
-                    <path d="M4 12l16 0"></path>
-                    <path d="M4 18l16 0"></path>
-                </svg>
-            </button>
-
             <!-- Search Toggle Mobile -->
             {{ if site.Params.doks.flexSearch }}
-            <button type="button" id="searchToggleMobile" class="btn btn-link nav-link p-0 d-lg-none ms-auto me-3"
+            <button type="button" id="searchToggleMobile" class="btn btn-link nav-link p-0 d-lg-none ms-auto"
                 aria-label="Search">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -32,6 +20,18 @@
                 </svg>
             </button>
             {{ end }}
+
+            <button class="navbar-toggler {{ if not site.Params.doks.flexSearch }}ms-auto{{ end }}" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 6l16 0"></path>
+                    <path d="M4 12l16 0"></path>
+                    <path d="M4 18l16 0"></path>
+                </svg>
+            </button>
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">

@@ -12,10 +12,5 @@
 @import "version-warning"; // Version warning banner styles
 @import "landing-ord"; // Migrated ORD Landing Page Styles
 
-// Fix for horizontal overflow on landing page
-body {
-    overflow-x: hidden;
-    width: 100%;
-}
 
 // End of imports
