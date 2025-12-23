@@ -54,3 +54,17 @@
   height: auto;
   /* Height scales proportionally */
 }
+
+/* WORD WRAPPING
+ * -------------
+ * Used to wrap individual words in spans for styling or animation.
+ */
+.word {
+  display: inline-block;
+  margin-right: 0.25em;
+  /* Add space between words wrapped in spans */
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

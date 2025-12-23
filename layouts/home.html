@@ -3,7 +3,11 @@
   <div class="container">
     <div class="main">
       <h1 class="heading">
-        <span class="name clip">{{ .Params.title }}</span>
+        <span class="name clip">
+          {{ range split .Params.title " " }}
+          <span class="word">{{ . }}</span>
+          {{ end }}
+        </span>
         <span class="text">{{ .Params.headline1 }} {{ .Params.headline2 }}</span>
       </h1>
       <p class="tagline">{{ .Params.subheadline }}</p>
