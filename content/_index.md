@@ -16,7 +16,7 @@ actions:
   - label: "Transport"
     link: "docs/tutorials/complex-component-structure-deployment/"
   - label: "Deploy"
-    link: "docs/getting-started/setup/"
+    link: "docs/getting-started/deploy-a-helm-chart/"
 
 hero_image: "images/base.svg"
 
