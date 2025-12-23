@@ -37,6 +37,7 @@
         line-height: 1.12;
         padding-bottom: 0.12em;
 
+
         &.clip {
             background: var(--lp-home-hero-name-background);
             -webkit-background-clip: text;
@@ -591,7 +592,7 @@ html[data-bs-theme="light"] .neonephos-logo--light {
             background: var(--lp-c-bg-elv);
 
             h3 {
-                color: var(--lp-button-brand-text);
+                color: var(--lp-c-text-2)
             }
 
             &:hover {

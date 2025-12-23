@@ -17,7 +17,6 @@
     z-index: 1000;
     width: 100%;
     height: var(--nav-height);
-    border-bottom: 1px solid transparent;
     transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 
     @include media-breakpoint-up(lg) {
@@ -42,11 +41,24 @@
     padding: 0 !important;
 
     .container-fluid {
+        max-width: var(--container);
         height: 100%;
         display: flex;
         align-items: center;
         gap: var(--nav-gap);
         padding-inline: var(--nav-pad-x, 24px); // Add padding using var or fallback
+    }
+}
+
+[data-bs-theme="dark"] {
+    .navbar {
+        background-color: transparent;
+    }
+}
+
+[data-bs-theme="light"] {
+    .navbar {
+        background-color: var(--lp-c-bg);
     }
 }
 
@@ -250,8 +262,8 @@
     }
 
     .icon {
-        width: 20px;
-        height: 20px;
+        width: 1.5rem;
+        height: 1.5rem;
         display: inline-flex;
         align-items: center;
         justify-content: center;
