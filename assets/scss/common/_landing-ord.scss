@@ -4,7 +4,10 @@
     background: var(--lp-c-bg);
     min-height: 100vh;
     gap: 24px;
-    padding: var(--nav-pad-x) !important;
+    padding-top: var(--nav-height);
+    padding-left: var(--nav-pad-x) !important;
+    padding-right: var(--nav-pad-x) !important;
+    padding-bottom: var(--nav-height);
 
     .container {
         display: flex;
@@ -14,12 +17,7 @@
         text-align: center;
         gap: 64px;
         width: 100%;
-    }
-
-    .section-container {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: 0 !important;
+        max-width: var(--container);
     }
 
     .main {
@@ -73,111 +71,11 @@
         text-align: center;
     }
 
-    .section-title {
-        font-size: 32px;
-        font-weight: 600;
-        color: var(--lp-c-text-1);
-        text-align: center;
-        margin: 0 0 32px 0;
-        line-height: 1.2;
-    }
-
-    .actions-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        max-width: 1152px;
-        margin: 0 auto;
-        align-items: stretch;
-        align-content: start;
-        height: max-content;
-    }
-
-    .action-card {
-        display: block;
-        text-decoration: none;
-        border: 1px solid var(--lp-c-divider);
-        border-radius: 12px;
-        background: var(--lp-c-bg-soft);
-        transition: all 0.25s ease;
-        height: 100%;
-        overflow: hidden;
-        position: relative;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 12px;
-            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-                    rgba(46, 227, 255, 0.15),
-                    transparent 40%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            border-color: var(--lp-c-brand-1);
-            text-decoration: none;
-
-            &::before {
-                opacity: 1;
-            }
-        }
-
-        &:active {
-            transform: translateY(0);
-            box-shadow: none;
-        }
-    }
-
-    .action-card-content {
-        padding: 20px;
-        height: 100%;
+    .actions {
         display: flex;
-        flex-direction: column;
-        gap: 10px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .action-card-header {
-        display: flex;
-        align-items: center;
+        flex-wrap: wrap;
         gap: 12px;
-    }
-
-    .action-emoji {
-        display: inline-flex;
         justify-content: center;
-        align-items: center;
-        font-size: 24px;
-        width: 32px;
-        height: 32px;
-    }
-
-    .action-title {
-        margin: 0;
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--lp-c-text-1);
-        line-height: 1.2;
-    }
-
-    .action-description {
-        margin: 0;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--lp-c-text-2);
-        line-height: 1.6;
-        flex-grow: 1;
     }
 
     .image {
@@ -235,28 +133,16 @@
             gap: var(--nav-pad-x) !important;
         }
 
-        .actions-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
             width: 100%;
         }
 
-        .action-card-content {
-            padding: 16px;
-        }
-
-        .action-emoji {
-            font-size: 20px;
-            width: 28px;
-            height: 28px;
-        }
-
-        .action-title {
-            font-size: 16px;
-        }
-
-        .action-description {
-            font-size: 13px;
+        .action a {
+            padding: 12px 16px;
+            font-size: 14px;
         }
     }
 
@@ -290,7 +176,7 @@
     }
 
     @media (min-width: 960px) {
-        padding-top: 120px;
+        padding-top: 16px;
 
         .container {
             flex-direction: row;
@@ -369,22 +255,22 @@
 .action.brand a,
 .lp-button.brand {
     background: var(--brand-cyan);
-    color: black;
+    color: var(--lp-button-brand-text);
     border-color: transparent;
 
     &:hover {
-        color: black;
+        color: var(--lp-button-brand-text);
     }
 }
 
 .action.alt a,
 .lp-button.alt {
     background: var(--brand-blue-dark);
-    color: black;
+    color: var(--lp-button-brand-text);
     border-color: transparent;
 
     &:hover {
-        color: black;
+        color: var(--lp-button-brand-text);
     }
 }
 
@@ -426,45 +312,20 @@
     flex-direction: column;
     height: 100%;
     background: var(--lp-c-bg-soft);
-    border: 1px solid var(--lp-c-divider);
     border-radius: 12px;
     box-shadow: none;
     background-clip: padding-box;
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 12px;
-        background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-                rgba(46, 227, 255, 0.15),
-                transparent 40%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-        z-index: 1;
-    }
+    text-decoration: none; // Added to handle linkified cards
 
     &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        border-color: var(--lp-c-brand-1);
-        text-decoration: none;
-
-        &::before {
-            opacity: 1;
-        }
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        transform: translateY(-1px);
+        text-decoration: none; // Ensure no underline on hover
     }
 
     &:active {
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25);
         transform: translateY(0);
-        box-shadow: none;
     }
 
     .card-header {
@@ -473,18 +334,9 @@
         gap: 8px;
         margin: 0;
         font-size: 16px;
-        position: relative;
-        z-index: 2;
 
         .emoji {
             font-size: 1.2em;
-        }
-
-        .separator {
-            color: var(--lp-c-brand-1);
-            font-weight: 300;
-            opacity: 0.6;
-            font-family: sans-serif;
         }
 
         .title {
@@ -498,8 +350,6 @@
         font-weight: 500;
         line-height: 1.6;
         font-size: 14px;
-        position: relative;
-        z-index: 2;
     }
 
     @media (max-width: 480px) {
@@ -733,16 +583,6 @@ html[data-bs-theme="light"] .neonephos-logo--light {
             color: var(--lp-c-text-2);
         }
 
-        .action-card {
-            background: var(--lp-c-bg-elv);
-            border-color: var(--lp-c-divider-light);
-
-            &:hover {
-                background: var(--lp-c-bg-soft);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            }
-        }
-
         .lp-features {
             color: var(--lp-c-text-2);
         }
@@ -751,7 +591,7 @@ html[data-bs-theme="light"] .neonephos-logo--light {
             background: var(--lp-c-bg-elv);
 
             h3 {
-                color: var(--lp-c-text-1);
+                color: var(--lp-button-brand-text);
             }
 
             &:hover {

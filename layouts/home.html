@@ -18,22 +18,19 @@
   </div>
 
   <div class="container">
-    <div class="actions-grid">
+    <div class="actions">
       {{ range .Params.actions }}
-      <a href="{{ .link | relURL }}" class="action-card">
-        <div class="action-card-content">
-          <div class="action-card-header">
-            <h3 class="action-title">{{ .label }}</h3>
-          </div>
-          <p class="action-description">{{ .description }}</p>
-        </div>
-      </a>
+      <div class="action medium {{ .type | default " alt" }}">
+        <a href="{{ .link | relURL }}">{{ .label }}</a>
+      </div>
       {{ end }}
     </div>
   </div>
 
-  <div class="container section-container">
-    <h2 class="section-title">{{ .Params.why_choose_title }}</h2>
+  <div class="container">
+    <p class="definition">
+      {{ .Params.intro1 }} {{ .Params.intro2 }} {{ .Params.intro3 }}
+    </p>
   </div>
 
   <div class="container">
@@ -42,8 +39,6 @@
       {{ if .link }}
       <a href="{{ .link | relURL }}" class="lp-feature-card">
         <h3 class="card-header">
-          <span class="emoji">{{ .emoji }}</span>
-          <span class="separator">|</span>
           <span class="title">{{ .title }}</span>
         </h3>
         <p>{{ .description }}</p>
@@ -51,8 +46,6 @@
       {{ else }}
       <div class="lp-feature-card">
         <h3 class="card-header">
-          <span class="emoji">{{ .emoji }}</span>
-          <span class="separator">|</span>
           <span class="title">{{ .title }}</span>
         </h3>
         <p>{{ .description }}</p>
