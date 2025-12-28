@@ -4,10 +4,9 @@
 @import "header-custom"; // Custom Header Port
 @import "branding"; // Logo & fonts
 @import "sidebar"; // Sidebar navigation
-@import "cards"; // Unified card system
+@import "cards"; // Card grid system
 @import "components"; // TOC & description boxes
 @import "pages"; // Page-specific overrides
 @import "version-warning"; // Version warning banner styles
-@import "landing-ord"; // ORD Landing Page Styles (includes modern footer)
-
+@import "landing-ord"; // Migrated ORD Landing Page Styles
 // End of imports
