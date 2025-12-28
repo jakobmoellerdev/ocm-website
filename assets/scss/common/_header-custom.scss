@@ -1,5 +1,18 @@
-/* Custom Header Styles adapted from ORD Specification */
+/*
+ * Custom header navigation with sticky positioning and glassmorphism effect.
+ * Overrides Bootstrap navbar styles with !important where needed.
+ *
+ * Features:
+ * - Sticky header with scroll effects
+ * - Responsive navigation (mobile offcanvas, desktop inline)
+ * - Version dropdown with custom tooltip
+ * - Theme toggle and social icons
+ * - Dark mode support
+ */
 
+/* ============================================
+   CSS Custom Properties
+   ============================================ */
 :root {
     --nav-height: 60px;
     --nav-gap: clamp(16px, 2vw, 24px);

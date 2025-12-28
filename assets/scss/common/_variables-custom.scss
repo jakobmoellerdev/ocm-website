@@ -1,3 +1,18 @@
+/*
+ * CSS Custom Properties (Theme Variables)
+ *
+ * Features:
+ * - Color system (backgrounds, text, borders)
+ * - OCM brand colors (blue/cyan palette)
+ * - Glassmorphism effects
+ * - Button styles
+ * - Hero section gradients
+ * - Light/dark theme support
+ */
+
+/* ============================================
+   Dark Theme (Default)
+   ============================================ */
 :root {
   --lp-c-white: #ffffff;
   --lp-c-black: #000000;
