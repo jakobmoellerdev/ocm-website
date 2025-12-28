@@ -3,8 +3,8 @@
 :root {
     --nav-height: 60px;
     --nav-gap: clamp(16px, 2vw, 24px);
-    --nav-link-size: 0.9375rem;
-    /* 15px */
+    --nav-link-size: 1rem;
+    /* 16px - increased from 15px */
     --fw-nav: 500;
     --fw-nav-hover: 500;
     --fw-nav-active: 600;
@@ -38,7 +38,7 @@
 
 .navbar {
     height: 100%;
-    padding: 0 !important;
+    padding: 0;
 
     .container-fluid {
         max-width: var(--container);
@@ -74,11 +74,8 @@
         display: block;
     }
 
-    .navbar-brand-text {
-        margin-left: 10px;
-        font-weight: 700;
-        color: var(--c-text-strong);
-        line-height: 1;
+    > span {
+        word-spacing: -0.35em; /* Reduced spacing between words in "Open Component Model" */
     }
 }
 
@@ -117,7 +114,7 @@
         padding: 0.5rem 0; // Larger hit area on mobile
         font-size: var(--nav-link-size);
         font-weight: var(--fw-nav);
-        color: var(--lp-c-text-1) !important;
+        color: var(--lp-c-text-1);
         text-decoration: none;
         transition: color 0.15s ease;
         background: transparent;
@@ -131,13 +128,13 @@
 
         &:hover,
         &:focus {
-            color: var(--c-accent) !important;
+            color: var(--c-accent);
             font-weight: var(--fw-nav-hover);
         }
 
         &.active,
         &[aria-current="page"] {
-            color: var(--c-accent) !important;
+            color: var(--c-accent);
             font-weight: var(--fw-nav-active);
         }
     }
@@ -147,7 +144,7 @@
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px; /* Reduced from 16px to match original spacing */
     margin-top: 1rem; // Spacing on mobile
 
     @include media-breakpoint-up(lg) {
@@ -160,10 +157,7 @@
     .btn-link,
     .nav-link,
     .header-github-pill,
-    .mode-toggle,
-    .btn-dropdown,
-    .dropdown,
-    .version-droplet {
+    .mode-toggle {
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -173,13 +167,37 @@
         line-height: 1 !important;
         vertical-align: middle !important;
     }
+    
+    // Dropdown container should not have height restriction
+    .dropdown {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+        vertical-align: middle !important;
+    }
+
+    // Special handling for dropdown toggle buttons to ensure Bootstrap functionality
+    .btn-dropdown {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 32px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+        vertical-align: middle !important;
+        cursor: pointer !important;
+    }
 
     .version-droplet {
         position: relative; // Needed for tooltip positioning
-        padding: 0 10px !important;
+        padding: 4px 16px; /* Adjusted for flatter/wider appearance - much more horizontal padding, less vertical */
         background-color: #ffc107;
         color: #000;
-        border-radius: 16px;
+        border-radius: 10px; /* Flatter border radius */
         font-size: 11px;
         font-weight: 700;
         text-transform: uppercase;
@@ -244,13 +262,13 @@
 }
 
 /* GitHub Pill Style */
-.header-github-pill {
+.navbar-right .header-github-pill {
     gap: 6px;
-    color: var(--lp-c-text-1);
+    color: var(--lp-c-text-1) !important; /* Match other header elements for consistent brightness */
     font-size: var(--nav-link-size);
     font-weight: var(--fw-nav);
-    text-decoration: none;
-    transition: color 0.15s ease;
+    text-decoration: none !important;
+    transition: color 0.15s ease, font-weight 0.15s ease;
 
     span {
         display: inline-flex;
@@ -258,7 +276,8 @@
     }
 
     &:hover {
-        color: var(--c-accent);
+        color: var(--c-accent) !important;
+        font-weight: var(--fw-nav-hover);
     }
 
     .icon {
@@ -270,28 +289,35 @@
     }
 }
 
+/* Version dropdown caret spacing */
+.dropdown-caret {
+    margin-left: 0.001rem;  // Minimal space between "Versions" text and dropdown icon
+}
+
 /* Theme Toggle */
-.mode-toggle {
+.navbar-right .mode-toggle {
     width: 32px;
-    color: var(--lp-c-text-1);
+    color: var(--lp-c-text-1) !important;
 
     &:hover {
-        color: var(--c-accent);
+        color: var(--c-accent) !important;
     }
 }
 
 /* Button & Dropdown Reset */
-.btn-link.nav-link,
-.btn-dropdown {
+.navbar-right .btn-link.nav-link,
+.navbar-right .btn-dropdown,
+.navbar-right .dropdown-toggle {
     font-size: var(--nav-link-size);
     font-weight: var(--fw-nav);
     color: var(--lp-c-text-1) !important;
     text-decoration: none !important;
-    border: none;
-    background: transparent;
+    border: none !important;
+    background: transparent !important;
 
     &:hover {
         color: var(--c-accent) !important;
+        font-weight: var(--fw-nav-hover);
     }
 
     svg {
@@ -299,7 +325,7 @@
     }
 
     &.me-3 {
-        margin-right: 1rem !important; // Restore spacing for search button
+        margin-right: 1rem; // Restore spacing for search button
     }
 }
 
@@ -371,12 +397,12 @@
         position: static;
         z-index: auto;
         flex-grow: 1;
-        width: 100% !important; // Force full width to fill container
-        height: auto !important;
-        visibility: visible !important;
-        background-color: transparent !important;
-        border: 0 !important;
-        transform: none !important;
+        width: 100%; // Force full width to fill container
+        height: auto;
+        visibility: visible;
+        background-color: transparent;
+        border: 0;
+        transform: none;
         transition: none;
         display: flex;
         align-items: center;

@@ -3,11 +3,7 @@
   <div class="container">
     <div class="main">
       <h1 class="heading">
-        <span class="name clip">
-          {{ range split .Params.title " " }}
-          <span class="word">{{ . }}</span>
-          {{ end }}
-        </span>
+        <span class="name clip">{{ .Params.title }}</span>
         <span class="text">{{ .Params.headline1 }} {{ .Params.headline2 }}</span>
       </h1>
       <p class="tagline">{{ .Params.subheadline }}</p>
@@ -15,44 +11,58 @@
     <div class="image">
       <div class="image-container">
         <div class="image-bg"></div>
-        <img class="image-src" src="{{ .Params.hero_image | default " images/base.svg" | relURL }}"
+        <img class="image-src" src="{{ .Params.hero_image | default "images/base.svg" | relURL }}"
           alt="{{ .Params.title }}" />
       </div>
     </div>
   </div>
 
+  <div class="container section-container">
+    <h2 class="section-title">{{ .Params.how_ocm_works_title }}</h2>
+  </div>
+  
   <div class="container">
-    <div class="actions">
+    <div class="ocm-card-grid ocm-card-grid--action">
       {{ range .Params.actions }}
-      <div class="action medium {{ .type | default " alt" }}">
-        <a href="{{ .link | relURL }}">{{ .label }}</a>
-      </div>
+      <a href="{{ .link | relURL }}" class="ocm-card">
+        <div class="ocm-card-content">
+          <div class="ocm-card-header">
+            <span class="ocm-card-emoji">{{ .emoji }}</span>
+            <h3 class="ocm-card-title">{{ .label }}</h3>
+          </div>
+          <p class="ocm-card-desc">{{ .description }}</p>
+        </div>
+      </a>
       {{ end }}
     </div>
   </div>
 
-  <div class="container">
-    <p class="definition">
-      {{ .Params.intro1 }} {{ .Params.intro2 }} {{ .Params.intro3 }}
-    </p>
+  <div class="container section-container">
+    <h2 class="section-title">{{ .Params.why_choose_title }}</h2>
   </div>
-
+  
   <div class="container">
-    <div class="lp-features">
+    <div class="ocm-card-grid ocm-card-grid--benefit">
       {{ range .Params.benefits }}
       {{ if .link }}
-      <a href="{{ .link | relURL }}" class="lp-feature-card">
-        <h3 class="card-header">
-          <span class="title">{{ .title }}</span>
-        </h3>
-        <p>{{ .description }}</p>
+      <a href="{{ .link | relURL }}" class="ocm-card ocm-card--benefit">
+        <div class="ocm-card-content">
+          <div class="ocm-card-header">
+            <span class="ocm-card-emoji">{{ .emoji }}</span>
+            <h3 class="ocm-card-title">{{ .title }}</h3>
+          </div>
+          <p class="ocm-card-desc">{{ .description }}</p>
+        </div>
       </a>
       {{ else }}
-      <div class="lp-feature-card">
-        <h3 class="card-header">
-          <span class="title">{{ .title }}</span>
-        </h3>
-        <p>{{ .description }}</p>
+      <div class="ocm-card ocm-card--benefit">
+        <div class="ocm-card-content">
+          <div class="ocm-card-header">
+            <span class="ocm-card-emoji">{{ .emoji }}</span>
+            <h3 class="ocm-card-title">{{ .title }}</h3>
+          </div>
+          <p class="ocm-card-desc">{{ .description }}</p>
+        </div>
       </div>
       {{ end }}
       {{ end }}
