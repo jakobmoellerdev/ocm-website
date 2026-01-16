@@ -25,7 +25,7 @@ actions:
     description: "Automate deployments with OCM Controllers and Flux. Seamless GitOps."
     link: "docs/getting-started/deploy-a-helm-chart/"
 
-hero_image: "images/ocm-logo-icon-colour.svg"
+hero_image: "svg/ocm-logo-icon-colour.svg"
 benefits:
   - icon: "package"
     title: "Create a Software Bill of Delivery"

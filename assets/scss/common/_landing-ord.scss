@@ -90,12 +90,12 @@
         max-width: 600px;
     }
 
-    /* New: two subheadline lines below hero lines, styled like card description (grey) */
+    /* Two subheadline lines below hero lines*/
     .subheadlines {
         margin-top: 8px;
     }
     .subheadline {
-        color: var(--ocm-card-desc-color); /* same grey as cards */
+        color: var(--ocm-card-desc-color);
         font-family: 'Inter var', 'Inter', system-ui, sans-serif;
         font-size: 24px;
         line-height: 28px;
@@ -133,7 +133,7 @@
         padding: 0 24px;
         line-height: 46px;
         font-size: 14px;
-        font-weight: 400; /* Button etwas schlanker: 400=Regular, 500=Medium */
+        font-weight: 400;
         text-decoration: none;
         transition: color 0.25s, border-color 0.25s, background-color 0.25s;
     }

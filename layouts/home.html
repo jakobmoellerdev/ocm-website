@@ -22,8 +22,12 @@
     <div class="image">
       <div class="image-container">
         <div class="image-bg"></div>
-        <img class="image-src" src='{{ .Params.hero_image | default "images/base.svg" | relURL }}'
-          alt="{{ .Params.title }}" />
+        {{- $hero := resources.Get .Params.hero_image -}}
+        {{- if $hero -}}
+          <img class="image-src" src='{{ $hero.RelPermalink }}' alt="{{ .Params.title }}" />
+        {{- else -}}
+          <img class="image-src" src='{{ "images/base.svg" | relURL }}' alt="{{ .Params.title }}" />
+        {{- end -}}
       </div>
     </div>
   </div>

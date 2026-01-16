@@ -17,7 +17,6 @@
     --nav-height: 56px;
     --nav-gap: clamp(16px, 2vw, 24px);
     --nav-link-size: 1rem;
-    /* 16px - increased from 15px */
     --fw-nav: 400;
     --fw-nav-hover: 400;
     --fw-nav-active: 500;
@@ -88,7 +87,7 @@
     }
 
     > span {
-        word-spacing: -0.35em; /* Reduced spacing between words in "Open Component Model" */
+        word-spacing: -0.35em;
     }
 }
 
@@ -157,7 +156,7 @@
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 12px; /* Reduced from 16px to match original spacing */
+    gap: 12px;
     margin-top: 1rem; // Spacing on mobile
 
     @include media-breakpoint-up(lg) {
@@ -217,11 +216,11 @@
     }
 
     .version-droplet {
-        position: relative; // Needed for tooltip positioning
-        padding: 4px 16px; /* Adjusted for flatter/wider appearance - much more horizontal padding, less vertical */
+        position: relative;
+        padding: 4px 16px;
         background-color: #ffc107;
         color: #000;
-        border-radius: 10px; /* Flatter border radius */
+        border-radius: 10px;
         font-size: 11px;
         font-weight: 700;
         text-transform: uppercase;
@@ -288,7 +287,7 @@
 /* GitHub Pill Style */
 .navbar-right .header-github-pill {
     gap: 6px;
-    color: var(--lp-c-text-1) !important; /* Match other header elements for consistent brightness */
+    color: var(--lp-c-text-1) !important;
     font-size: var(--nav-link-size);
     font-weight: var(--fw-nav);
     text-decoration: none !important;
