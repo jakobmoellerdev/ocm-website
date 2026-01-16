@@ -80,13 +80,16 @@
     padding: 0;
     margin: 0;
     font-size: 1rem;
+    gap: 0.1rem; /* explicit tight gap between logo icon and brand text */
 
     img {
         // height attribute handles size, ensuring unconstrained width maintains aspect ratio
         display: block;
+        margin-right: 0; /* rely on gap for spacing */
     }
 
     > span {
+        margin-left: 0 !important; /* override utility margin to reduce gap next to logo */
         word-spacing: -0.35em;
     }
 }
