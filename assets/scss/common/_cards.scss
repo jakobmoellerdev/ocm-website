@@ -25,6 +25,10 @@
   /* Card Text Colors */
   --ocm-card-title-color: var(--lp-c-text-1);
   --ocm-card-desc-color: var(--lp-c-text-2);
+
+  /* Icon Color (harmonized with OCM brand/header). 
+     Uses brand-1 by default; overrideable via --ocm-card-icon-color */
+  --ocm-card-icon-color: var(--brand-blue-dark);
   
   /* Card Shadows */
   --ocm-card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -106,6 +110,45 @@
   width: 100%;
 }
 
+/* Remove card border for action/benefit variants to avoid perceived icon frame */
+.ocm-card-grid--action .ocm-card,
+.ocm-card--benefit {
+  border-color: transparent;
+}
+.ocm-card-grid--action .ocm-card:hover,
+.ocm-card--benefit:hover {
+  border-color: transparent;
+}
+
+/* ============================================
+   Card Icon (SVG/Image) shared styles
+   ============================================ */
+.ocm-card-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  line-height: 1;
+  flex-shrink: 0;
+  color: var(--ocm-card-icon-color, var(--brand-cyan));
+}
+.ocm-card-icon img,
+.ocm-card-icon svg {
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+.ocm-card-icon svg {
+  /* rely on Tabler's built-in outline attributes; just ensure sizing and color */
+  fill: none;
+}
+/* Explicitly suppress Tabler's guide path to avoid any perceived "frame" */
+.ocm-card-icon svg path[d="M0 0h24v24H0z"] {
+  stroke: none !important;
+  fill: none !important;
+}
+
 /* ============================================
    Layout Variant: Action Cards
    (Used for "How OCM Works" section)
@@ -133,7 +176,7 @@
 .ocm-card-grid--action .ocm-card .ocm-card-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   margin-bottom: 12px;
 }
@@ -149,20 +192,21 @@
 
 .ocm-card--action .ocm-card-title,
 .ocm-card-grid--action .ocm-card .ocm-card-title {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   color: var(--ocm-card-title-color);
   margin: 0;
   line-height: 1.4;
-  text-align: center;
+  text-align: left;
 }
 
 .ocm-card--action .ocm-card-desc,
 .ocm-card-grid--action .ocm-card .ocm-card-desc {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--ocm-card-desc-color);
   margin: 0;
+  text-align: left;
 }
 
 /* ============================================
@@ -186,7 +230,7 @@
 .ocm-card--benefit .ocm-card-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   margin-bottom: 12px;
 }
@@ -197,19 +241,20 @@
 }
 
 .ocm-card--benefit .ocm-card-title {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
   color: var(--ocm-card-title-color);
   margin: 0;
   line-height: 1.4;
-  text-align: center;
+  text-align: left;
 }
 
 .ocm-card--benefit .ocm-card-desc {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--ocm-card-desc-color);
   margin: 0;
+  text-align: left;
 }
 
 /* ============================================
@@ -294,6 +339,31 @@
   width: 100%;
 }
 
+.section-title.section-title--left {
+  text-align: left !important;
+  font-weight: 700;
+  font-family: 'Inter var', 'Inter', system-ui, sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+@media (min-width: 768px) {
+  .section-title.section-title--left {
+    font-size: 24px;
+    line-height: 36px;
+  }
+}
+
+/* subtle divider between card sections; adjust spacing via margin */
+.section-divider {
+  border: 0;
+  border-top: 1px solid var(--lp-c-divider);
+  height: 0;
+  max-width: 1152px;
+  margin: 40px auto; /* hier Abstand zwischen den beiden Card-Reihen anpassen */
+  opacity: 0.6;
+}
+
 /* ============================================
    Responsive Behavior
    ============================================ */
@@ -362,5 +432,14 @@
   .ocm-card--vertical {
     height: auto;
     min-height: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ocm-card-icon,
+  .ocm-card-icon img,
+  .ocm-card-icon svg {
+    width: 48px;
+    height: 48px;
   }
 }

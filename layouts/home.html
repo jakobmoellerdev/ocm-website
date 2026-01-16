@@ -4,30 +4,43 @@
     <div class="main">
       <h1 class="heading">
         <span class="name clip">{{ .Params.title }}</span>
-        <span class="text">{{ .Params.headline1 }} {{ .Params.headline2 }}</span>
+        <span class="text">
+          <span class="hero-line">{{ .Params.hero_line1 }}</span>
+          <span class="hero-line">{{ .Params.hero_line2 }}</span>
+          <span class="hero-line">{{ .Params.hero_line3 }}</span>
+        </span>
       </h1>
-      <p class="tagline">{{ .Params.subheadline }}</p>
+      <div class="subheadlines">
+        {{ with .Params.subheadline1 }}<p class="subheadline">{{ . }}</p>{{ end }}
+        {{ with .Params.subheadline2 }}<p class="subheadline">{{ . }}</p>{{ end }}
+      </div>
+      <div class="hero-actions">
+        <a class="hero-button hero-button--brand" href='{{ "/docs/getting-started/" | relURL }}'>Get Started</a>
+        <a class="hero-button hero-button--alt" href='{{ "/docs/overview/" | relURL }}'>Overview</a>
+      </div>
     </div>
     <div class="image">
       <div class="image-container">
         <div class="image-bg"></div>
-        <img class="image-src" src="{{ .Params.hero_image | default "images/base.svg" | relURL }}"
+        <img class="image-src" src='{{ .Params.hero_image | default "images/base.svg" | relURL }}'
           alt="{{ .Params.title }}" />
       </div>
     </div>
   </div>
 
-  <div class="container section-container">
-    <h2 class="section-title">{{ .Params.how_ocm_works_title }}</h2>
-  </div>
-  
-  <div class="container">
+  <div class="container container--after-hero">
     <div class="ocm-card-grid ocm-card-grid--action">
       {{ range .Params.actions }}
       <a href="{{ .link | relURL }}" class="ocm-card">
         <div class="ocm-card-content">
           <div class="ocm-card-header">
-            <span class="ocm-card-emoji">{{ .emoji }}</span>
+            {{- $iconName := .icon -}}
+            {{- if $iconName -}}
+              {{- $res := resources.Get (printf "svg/%s.svg" $iconName) -}}
+              {{- if $res -}}
+                <span class="ocm-card-icon" aria-hidden="true">{{ $res.Content | safeHTML }}</span>
+              {{- end -}}
+            {{- end -}}
             <h3 class="ocm-card-title">{{ .label }}</h3>
           </div>
           <p class="ocm-card-desc">{{ .description }}</p>
@@ -37,8 +50,8 @@
     </div>
   </div>
 
-  <div class="container section-container">
-    <h2 class="section-title">{{ .Params.why_choose_title }}</h2>
+  <div class="container">
+    <hr class="section-divider" />
   </div>
   
   <div class="container">
@@ -48,7 +61,13 @@
       <a href="{{ .link | relURL }}" class="ocm-card ocm-card--benefit">
         <div class="ocm-card-content">
           <div class="ocm-card-header">
-            <span class="ocm-card-emoji">{{ .emoji }}</span>
+            {{- $iconName := .icon -}}
+            {{- if $iconName -}}
+              {{- $res := resources.Get (printf "svg/%s.svg" $iconName) -}}
+              {{- if $res -}}
+                <span class="ocm-card-icon" aria-hidden="true">{{ $res.Content | safeHTML }}</span>
+              {{- end -}}
+            {{- end -}}
             <h3 class="ocm-card-title">{{ .title }}</h3>
           </div>
           <p class="ocm-card-desc">{{ .description }}</p>
@@ -58,7 +77,13 @@
       <div class="ocm-card ocm-card--benefit">
         <div class="ocm-card-content">
           <div class="ocm-card-header">
-            <span class="ocm-card-emoji">{{ .emoji }}</span>
+            {{- $iconName := .icon -}}
+            {{- if $iconName -}}
+              {{- $res := resources.Get (printf "svg/%s.svg" $iconName) -}}
+              {{- if $res -}}
+                <span class="ocm-card-icon" aria-hidden="true">{{ $res.Content | safeHTML }}</span>
+              {{- end -}}
+            {{- end -}}
             <h3 class="ocm-card-title">{{ .title }}</h3>
           </div>
           <p class="ocm-card-desc">{{ .description }}</p>

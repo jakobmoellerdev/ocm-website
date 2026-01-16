@@ -41,12 +41,21 @@
         line-height: 1.2;
         font-weight: 600;
         margin-bottom: 24px;
+        letter-spacing: -0.01em;
+        font-optical-sizing: auto;
     }
 
     .name {
         font-size: 48px;
+        font-weight: 700;
+        font-family: 'Inter var', 'Inter', system-ui, sans-serif;
         display: block;
         line-height: 1.12;
+        letter-spacing: -0.4px;
+        font-optical-sizing: auto;
+        width: fit-content;
+        max-width: 392px;
+        white-space: normal;
         padding-bottom: 0.12em;
 
         &.clip {
@@ -58,8 +67,15 @@
     }
 
     .text {
-        font-size: 36px;
-        font-weight: 500;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.12;
+        font-family: 'Inter var', 'Inter', system-ui, sans-serif;
+        letter-spacing: -0.4px;
+        font-optical-sizing: auto;
+        width: fit-content;
+        max-width: 392px;
+        white-space: normal;
         color: var(--lp-c-text-1);
         display: block;
         margin-top: 8px;
@@ -68,9 +84,78 @@
     .tagline {
         color: var(--lp-c-text-2);
         font-size: 20px;
+        font-family: 'Inter var', 'Inter', system-ui, sans-serif;
         line-height: 30px;
-        margin: 0 auto 32px;
+        margin: 0 auto 24px;
         max-width: 600px;
+    }
+
+    /* New: two subheadline lines below hero lines, styled like card description (grey) */
+    .subheadlines {
+        margin-top: 8px;
+    }
+    .subheadline {
+        color: var(--ocm-card-desc-color); /* same grey as cards */
+        font-family: 'Inter var', 'Inter', system-ui, sans-serif;
+        font-size: 24px;
+        line-height: 28px;
+        margin: 0;
+    }
+
+    /* Fixed hero lines: block and nowrap on tablet/desktop; mobile wraps normally */
+    .hero-line {
+        display: block;
+        white-space: normal;
+    }
+    @media (min-width: 481px) {
+        .hero-line {
+            white-space: nowrap;
+        }
+    }
+
+    /* Hero actions (buttons under subheadline) */
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding-top: 34px;
+        justify-content: center;
+    }
+
+    .container--after-hero {
+        margin-top: 40px;
+    }
+
+    .hero-button {
+        display: inline-block;
+        border: 1px solid transparent;
+        border-radius: 24px;
+        padding: 0 24px;
+        line-height: 46px;
+        font-size: 14px;
+        font-weight: 400; /* Button etwas schlanker: 400=Regular, 500=Medium */
+        text-decoration: none;
+        transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+    }
+
+    .hero-button--brand {
+        border-color: var(--lp-button-brand-border);
+        color: var(--lp-button-brand-text);
+        background-color: var(--lp-button-brand-bg);
+    }
+
+    .hero-button--brand:hover {
+        background-color: var(--lp-button-brand-hover-bg);
+    }
+
+    .hero-button--alt {
+        border-color: var(--lp-c-divider);
+        color: var(--lp-button-alt-text);
+        background-color: var(--lp-button-alt-bg);
+    }
+
+    .hero-button--alt:hover {
+        background-color: var(--lp-button-alt-hover-bg);
     }
 
     .image {
@@ -80,6 +165,9 @@
         margin-top: 10px;
         justify-content: center;
         align-items: center;
+        position: relative; /* isolate glow rendering from adjacent text container */
+        isolation: isolate; /* create a new stacking context so filters/mixes don't interact with siblings */
+        z-index: 0; /* keep glow and image contained below other UI overlays */
 
         .image-container {
             position: relative;
@@ -87,6 +175,8 @@
             height: 350px;
             margin: 0 auto;
             max-width: 100%;
+            isolation: isolate; /* ensure background glow does not blend with sibling elements */
+            overflow: visible;   /* prevent blur from being clipped by container bounds */
 
             @media (max-width: 480px) {
                 width: 200px;
@@ -106,6 +196,10 @@
             filter: var(--lp-home-hero-image-filter);
             border-radius: 50%;
             opacity: 0.6;
+            z-index: 0;                 /* place glow behind the logo image */
+            mix-blend-mode: normal;     /* avoid blending with text container; keep standard compositing */
+            will-change: filter, opacity; /* hint for smoother glow rendering */
+            pointer-events: none;       /* no interaction, purely visual */
         }
 
         .image-src {
@@ -119,6 +213,8 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
+            /* subtle glow to blend with background */
+            filter: drop-shadow(0 0 24px rgba(46, 227, 255, 0.3));
         }
     }
 
@@ -126,10 +222,14 @@
     @media (min-width: 768px) {
         .name {
             font-size: 56px;
+            line-height: 56px;
+            max-width: 576px;
         }
 
         .text {
-            font-size: 48px;
+            font-size: 56px;
+            line-height: 56px;
+            max-width: 576px;
         }
 
         .tagline {
@@ -154,19 +254,35 @@
 
         .name {
             font-size: 64px;
+            line-height: 64px;
         }
 
         .text {
-            font-size: 56px;
+            font-size: 64px;
+            line-height: 64px;
         }
 
         .tagline {
             margin: 0 0 32px;
         }
 
+        .hero-actions {
+            justify-content: flex-start;
+        }
+
         .image {
             flex: 1 1 50%;
             order: 2;
+        }
+    }
+
+    /* Mobile smallest view: ensure name and text are centered */
+    @media (max-width: 480px) {
+        .name,
+        .text {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
         }
     }
 }

@@ -7,6 +7,13 @@
  * 2. Basic image adjustments
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://rsms.me/inter/inter.css'); /* Inter variable font – matches openmfp.org setup */
+
+html, body {
+  font-family: 'Inter var', 'Inter', system-ui, sans-serif;
+  font-optical-sizing: auto;
+}
 /* FULL-WIDTH CONTAINER
  * --------------------
  * .container-fw = Full Width Container
