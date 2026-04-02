@@ -140,4 +140,4 @@ See [How-To: Configure Credentials for Multiple Registries]({{< relref "configur
 ## Related Documentation
 
 - [Concept: Signing and Verification]({{< relref "signing-and-verification-concept.md" >}}) — Understand how OCM signing works
-- [Tutorial: Sign and Verify Components]({{< relref "signing-and-verification.md" >}}) — End-to-end signing workflow
+- [Tutorial: Sign and Verify Components]({{< relref "docs/tutorials/signing/plain.md" >}}) — End-to-end signing workflow

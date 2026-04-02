@@ -1,8 +1,8 @@
 ---
-title: "PEM Signing with Certificate Chains"
-description: "Sign and verify component versions using PEM-encoded signatures with an X.509 certificate chain and a dedicated trust anchor."
+title: "Certificate Chains (PEM)"
+description: "Sign and verify component versions using PEM-encoded signatures with an X.509 certificate chain."
 icon: "🔐"
-weight: 56
+weight: 20
 toc: true
 ---
 
@@ -415,7 +415,7 @@ A signature with the same name already exists in the component descriptor. Use `
 
 ## Related Documentation
 
-- [Signing and Verification]({{< relref "signing-and-verification.md" >}}) — Overview of all signing options, algorithms, and trust models
+- [Signing and Verification]({{< relref "docs/tutorials/signing/plain.md" >}}) — Overview of all signing options, algorithms, and trust models
 - [Sign Component Versions]({{< relref "sign-component-version.md" >}}) — Quick-start guide for Plain signing
 - [Verify Component Versions]({{< relref "verify-component-version.md" >}}) — Quick-start guide for verification
 - [Configure Credentials for Signing]({{< relref "docs/how-to/configure-signing-credentials.md" >}}) — Full credential configuration reference
